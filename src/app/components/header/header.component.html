@@ -1,0 +1,53 @@
+<section>
+  <div>
+    <img src="../../../assets/img/International_Pokémon_logo.svg" />
+  </div>
+  <div class="inputContainer">
+    <input
+      type="text"
+      [placeholder]="
+        language === 'DE' ? 'Suche nach Name oder ID' : 'Search by name or ID'
+      "
+      (keyup)="search()"
+      [(ngModel)]="searchTerm"
+    /><i (click)="reset()" class="material-icons">{{
+      searchTerm === "" ? "search" : "close"
+    }}</i>
+  </div>
+  <nav>
+    <ul>
+      <li (click)="chooseLanguage()" class="nav-item">
+        <a class="iconLink">
+          <mat-icon fontIcon="language"></mat-icon>{{ language }}</a
+        >
+      </li>
+      <li (click)="toggleMode()" class="nav-item">
+        <a class="iconLink">
+          <mat-icon fontIcon="{{ modeIcon }}"></mat-icon>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
+<div>
+  <div class="filterContainer">
+    <h2>
+      {{ this.language === "DE" ? "Filtern nach Typ" : "Filter by Type" }}
+    </h2>
+    <div class="statsTable">
+      <div *ngFor="let type of allTypes" style="cursor: pointer">
+        <p
+          (click)="setFilter(type.name)"
+          [ngClass]="[getTypeClass(type.name), 'type']"
+          [style.color]="activeFilter === type.name ? ' #f05454' : '#dddddd'"
+        >
+          {{
+            this.language === "DE"
+              ? getTypeClass(type.name)
+              : capitalizeFirstLetter(type.name)
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

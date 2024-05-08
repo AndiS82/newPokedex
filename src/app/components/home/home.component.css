@@ -1,0 +1,102 @@
+section {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+img {
+  position: relative;
+  height: 15rem;
+  width: 300px;
+  margin-top: -3rem;
+}
+
+.divLight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 15rem;
+  height: 15rem;
+  margin: 3rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(52.41deg, #ffe1c6 4.87%, #ffcb05 94.37%);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.divLight:hover {
+  transform: scale(1.1);
+}
+
+.divDark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 15rem;
+  height: 15rem;
+  margin: 3rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(52.41deg, #bfdfff 4.87%, #001224 94.37%);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.divDark:hover {
+  transform: scale(1.1);
+}
+
+.bottomInfo {
+  color: #222831;
+  background-color: #dddddd;
+  width: 15rem;
+  height: 5rem;
+  padding: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonContainer .bottomButton {
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #ffcb05;
+  color: #222831;
+}
+
+.imgContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgContainer h1 {
+  padding: 20px;
+}
+
+.imgContainer img {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.tooManyResults {
+  position: absolute;
+  color: #f05454;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

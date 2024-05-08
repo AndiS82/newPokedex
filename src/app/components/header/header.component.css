@@ -1,0 +1,207 @@
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div input {
+  height: 5vh;
+  width: 20vw;
+  padding: 10px 30px 10px 10px;
+  border-radius: 15px;
+  cursor: text;
+}
+
+div i {
+  font-size: 16px;
+  margin-left: -25px;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+}
+
+li {
+  margin: 0 20px;
+  width: 50px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.iconLink {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+}
+
+.iconLink mat-icon {
+  width: 100%;
+  margin-right: 5px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.inputContainer input {
+  flex: 1;
+}
+
+i {
+  color: black;
+  cursor: pointer;
+}
+
+.iconLink:hover {
+  color: #f05454;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filterContainer h2 {
+  padding: 20px;
+}
+
+.statsTable {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+}
+
+/*<<<<<TypeButtons>>>>>*/
+
+.type {
+  width: 75px;
+  margin-top: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dddddd;
+  border: 2px transparent;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.type:hover {
+  transform: scale(1.1);
+}
+
+.Normal {
+  background-color: #959595;
+}
+
+.Pflanze {
+  background-color: rgb(65, 162, 65);
+}
+
+.Feuer {
+  background-color: rgb(181, 49, 49);
+}
+
+.Wasser {
+  background-color: rgb(77, 77, 248);
+}
+
+.Elektro {
+  background-color: rgb(208, 177, 0);
+}
+
+.Kampf {
+  background-color: rgb(48, 26, 26);
+}
+
+.Flug {
+  background-color: rgb(156, 156, 201);
+}
+
+.Gift {
+  background-color: rgb(139, 39, 139);
+}
+
+.Boden {
+  background-color: rgb(177, 177, 142);
+}
+
+.Gestein {
+  background-color: rgb(105, 76, 41);
+}
+
+.Käfer {
+  background-color: rgb(105, 105, 14);
+}
+
+.Eis {
+  background-color: rgb(95, 177, 205);
+}
+
+.Psycho {
+  background-color: salmon;
+}
+
+.Geist {
+  background-color: rgb(114, 99, 210);
+}
+
+.Drache {
+  background-color: rgb(50, 43, 99);
+}
+
+.Unlicht {
+  background-color: rgb(47, 47, 47);
+}
+
+.Stahl {
+  background-color: steelblue;
+}
+
+.Fee {
+  background-color: rgb(252, 156, 172);
+}
+
+/*<<<<<Media Queries>>>>>*/
+@media (max-width: 1200px) {
+  .statsTable {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  div input {
+    width: 100%;
+    margin: 20px 0px;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    flex-direction: column;
+  }
+
+  .statsTable {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .statsTable {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

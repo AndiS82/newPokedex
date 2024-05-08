@@ -1,0 +1,163 @@
+.headlineContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px;
+  background-color: #dddddd;
+}
+
+.dialogLight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(52.41deg, #ffe1c6 4.87%, #ffcb05 94.37%);
+}
+
+.dialogDark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(52.41deg, #bfdfff 4.87%, #001224 94.37%);
+}
+
+img {
+  height: 300px;
+  width: 300px;
+}
+
+.closeButton {
+  position: absolute;
+  right: 10px;
+  top: 15%;
+  cursor: pointer;
+}
+
+.closeButton button {
+  color: #dddddd;
+}
+
+.closeButton:hover {
+  color: #f05454;
+}
+
+.closeButton:hover button:hover {
+  color: #f05454;
+}
+
+.infoBox {
+  display: flex;
+  width: 100%;
+}
+
+.baseStat {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statsTable {
+  width: 100%;
+  padding: 10px;
+  background-color: #dddddd;
+}
+
+.statsTable h3 {
+  padding: 10px;
+}
+
+.darkRow {
+  background-color: #b8b8b8;
+}
+
+.types {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+  background-color: #dddddd;
+}
+.types h3 {
+  padding: 10px;
+}
+
+.type {
+  margin-top: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dddddd;
+  border-radius: 15px;
+}
+
+.Normal {
+  background-color: #959595;
+}
+
+.Pflanze {
+  background-color: rgb(65, 162, 65);
+}
+
+.Feuer {
+  background-color: rgb(181, 49, 49);
+}
+
+.Wasser {
+  background-color: rgb(77, 77, 248);
+}
+
+.Elektro {
+  background-color: rgb(208, 177, 0);
+}
+
+.Kampf {
+  background-color: rgb(48, 26, 26);
+}
+
+.Flug {
+  background-color: rgb(156, 156, 201);
+}
+
+.Gift {
+  background-color: rgb(139, 39, 139);
+}
+
+.Boden {
+  background-color: rgb(177, 177, 142);
+}
+
+.Gestein {
+  background-color: rgb(105, 76, 41);
+}
+
+.Käfer {
+  background-color: rgb(105, 105, 14);
+}
+
+.Eis {
+  background-color: rgb(119, 216, 248);
+}
+
+.Psycho {
+  background-color: salmon;
+}
+
+.Geist {
+  background-color: rgb(114, 99, 210);
+}
+
+.Drache {
+  background-color: rgb(50, 43, 99);
+}
+
+.Unlicht {
+  background-color: rgb(47, 47, 47);
+}
+
+.Stahl {
+  background-color: steelblue;
+}
+
+.Fee {
+  background-color: rgb(252, 156, 172);
+}

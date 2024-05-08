@@ -1,0 +1,41 @@
+<div [ngClass]="themeHandlerService.darkMode ? 'dialogDark' : 'dialogLight'">
+  <div class="headlineContainer">
+    <h1>{{ data.name }}</h1>
+    <h1>{{ data.id }}</h1>
+  </div>
+  <div class="imgContainer">
+    <div class="closeButton">
+      <button mat-mini-fab color="primary" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <img [src]="data.url" />
+  </div>
+  <div class="infoBox">
+    <div class="statsTable" style="width: 70%">
+      <h2>{{ this.data.lang === "DE" ? "Statuswerte" : "Stats" }}</h2>
+      <table>
+        <tr *ngFor="let stat of data.data.stats; let i = index">
+          <td [ngClass]="{ darkRow: i % 2 !== 0 }">
+            <p class="baseStat">
+              {{ getStatLabel(i) }}:
+              <span style="margin-left: 5px">{{ stat.base_stat }}</span>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="statsTable" style="width: 30%">
+      <h2>{{ this.data.lang === "DE" ? "Typ" : "Type" }}</h2>
+      <div *ngFor="let type of data.data.types">
+        <p [ngClass]="[getTypeClass(type.type.name), 'type']">
+          {{
+            this.data.lang === "DE"
+              ? getTypeClass(type.type.name)
+              : capitalizeFirstLetter(type.type.name)
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

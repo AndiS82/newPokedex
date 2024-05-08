@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "OpenSans", sans-serif;
+  src: "./assets/fonts/OpenSans-VariableFont_wdth,wght.ttf";
+}
+
+body {
+  margin: 0;
+  font-family: "OpenSans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Light Theme */
+.light-theme {
+  height: auto;
+  background-color: #caedff;
+  color: #222831;
+}
+
+/* Dark Theme */
+.dark-theme {
+  height: auto;
+  background-color: #222831;
+  color: #dddddd;
+}
+
+/* html,
+body {
+height: 100%;
+} */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.divLight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 15rem;
+  margin: 3rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(52.41deg, #ffe1c6 4.87%, #ffcb05 94.37%);
+}
+
+.divDark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 15rem;
+  margin: 3rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(52.41deg, #bfdfff 4.87%, #001224 94.37%);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

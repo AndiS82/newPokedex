@@ -1,0 +1,63 @@
+<section *ngIf="inputValue === '' && type === ''; else searchActive">
+  <div
+    [ngClass]="themeHandlerService.darkMode ? 'divDark' : 'divLight'"
+    *ngFor="let pokemon of pokemonList; let i = index"
+    (click)="
+      getDetails(
+        pokemon.id,
+        lang.length !== 0 ? lang[i].name : pokemon.name,
+        pokemon.url
+      )
+    "
+  >
+    <img [src]="pokemon.url" />
+    <div class="bottomInfo">
+      <h3>{{ lang.length !== 0 ? lang[i].name : pokemon.name }}</h3>
+      <h3>{{ "#" + ("000" + pokemon.id).slice(-3) }}</h3>
+    </div>
+  </div>
+  <div class="buttonContainer">
+    <button class="bottomButton" (click)="addOffset()">Load More...</button>
+    <button
+      class="bottomButton"
+      *ngIf="showScrollToTopButton"
+      (click)="scrollToTop()"
+    >
+      Scroll to Top
+    </button>
+  </div>
+</section>
+
+<ng-template #searchActive>
+  <section>
+    <div
+      [ngClass]="themeHandlerService.darkMode ? 'divDark' : 'divLight'"
+      *ngFor="let result of searchResults; let i = index"
+      (click)="getDetails(result.id, result.name, result.url)"
+    >
+      <img [src]="result.url" />
+      <div class="bottomInfo">
+        <h3>{{ result.name }}</h3>
+        <h3>
+          {{ "#" + ("000" + result.id).slice(-3) }}
+        </h3>
+      </div>
+    </div>
+    <div
+      class="imgContainer"
+      *ngIf="inputValue !== '' && searchResults.length === 0"
+    >
+      <h1>No results...</h1>
+      <img src="../../../assets/img/sadPikachu.png" />
+    </div>
+    <div class="buttonContainer">
+      <button
+        class="bottomButton"
+        *ngIf="showScrollToTopButton"
+        (click)="scrollToTop()"
+      >
+        Scroll to Top
+      </button>
+    </div>
+  </section>
+</ng-template>
