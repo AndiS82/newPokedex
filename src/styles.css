@@ -18,6 +18,7 @@ body {
   font-family: "OpenSans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  min-height: 100vh;
 }
 
 /* Light Theme */

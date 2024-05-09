@@ -17,13 +17,15 @@
     </div>
   </div>
   <div class="buttonContainer">
-    <button class="bottomButton" (click)="addOffset()">Load More...</button>
+    <button class="bottomButton" (click)="addOffset()">
+      {{ language === "DE" ? "Mehr laden" : "Load More" }}
+    </button>
     <button
       class="bottomButton"
       *ngIf="showScrollToTopButton"
       (click)="scrollToTop()"
     >
-      Scroll to Top
+      {{ language === "DE" ? "Zurück zum Anfang" : "Scroll to top" }}
     </button>
   </div>
 </section>
@@ -47,7 +49,9 @@
       class="imgContainer"
       *ngIf="inputValue !== '' && searchResults.length === 0"
     >
-      <h1>No results...</h1>
+      <h1>
+        {{ language === "DE" ? "Keine Ergebnisse gefunden." : "No results." }}
+      </h1>
       <img src="../../../assets/img/sadPikachu.png" />
     </div>
     <div class="buttonContainer">
@@ -56,7 +60,7 @@
         *ngIf="showScrollToTopButton"
         (click)="scrollToTop()"
       >
-        Scroll to Top
+        {{ language === "DE" ? "Zurück nach oben" : "Scroll to top" }}
       </button>
     </div>
   </section>
