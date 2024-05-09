@@ -37,12 +37,8 @@ img {
   color: #dddddd;
 }
 
-.closeButton:hover {
-  color: #f05454;
-}
-
 .closeButton:hover button:hover {
-  color: #f05454;
+  background-color: #f05454;
 }
 
 .infoBox {

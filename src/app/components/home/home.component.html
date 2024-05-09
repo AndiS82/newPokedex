@@ -17,10 +17,11 @@
     </div>
   </div>
   <div class="buttonContainer">
-    <button class="bottomButton" (click)="addOffset()">
+    <button mat-flat-button class="bottomButton" (click)="addOffset()">
       {{ language === "DE" ? "Mehr laden" : "Load More" }}
     </button>
     <button
+      mat-flat-button
       class="bottomButton"
       *ngIf="showScrollToTopButton"
       (click)="scrollToTop()"

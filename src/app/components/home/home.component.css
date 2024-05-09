@@ -67,6 +67,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .buttonContainer .bottomButton {
@@ -76,6 +77,15 @@ img {
   border-radius: 15px;
   background-color: #ffcb05;
   color: #222831;
+}
+
+.buttonContainer .bottomButton:hover {
+  width: 12em;
+  margin: 0px 20px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f05454;
+  color: #dddddd;
 }
 
 .imgContainer {
