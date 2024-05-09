@@ -205,6 +205,9 @@ i {
 }
 
 @media (max-width: 480px) {
+  .inputContainer {
+    width: 80vw;
+  }
   .statsTable {
     grid-template-columns: repeat(3, 1fr);
   }
