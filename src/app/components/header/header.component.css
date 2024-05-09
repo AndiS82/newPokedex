@@ -55,7 +55,9 @@ a {
 }
 
 .inputContainer {
+  width: 30vw;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -75,6 +77,8 @@ i {
 .filterContainer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
