@@ -189,34 +189,31 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     const searchTermLower = this.inputValue.toLowerCase();
-    if (this.language === 'DE' && this.searchResults.length === 0) {
-      this.searchResults = DE.filter((pokemon: IPokemon): boolean => {
-        return (
-          pokemon.id.toString() === searchTermLower ||
+    const isNumeric =
+      !isNaN(parseFloat(searchTermLower)) &&
+      isFinite(parseFloat(searchTermLower));
+
+    if (isNumeric) {
+      const searchTerm = parseInt(searchTermLower, 10);
+      if (this.language === 'DE') {
+        this.searchResults = DE.filter(
+          (pokemon: IPokemon) => pokemon.id === searchTerm
+        );
+      } else {
+        this.searchResults = this.allPokemon.filter(
+          (pokemon) => pokemon.id === searchTerm
+        );
+      }
+    } else {
+      if (this.language === 'DE') {
+        this.searchResults = DE.filter((pokemon: IPokemon) =>
           pokemon.name.toLowerCase().includes(searchTermLower)
         );
-      });
-    } else if (this.language === 'DE' && this.searchResults.length !== 0) {
-      this.searchResults = [...this.searchResults].filter((pokemon) => {
-        return (
-          pokemon.id.toString() === searchTermLower ||
+      } else {
+        this.searchResults = this.allPokemon.filter((pokemon) =>
           pokemon.name.toLowerCase().includes(searchTermLower)
         );
-      });
-    } else if (this.language === 'EN' && this.searchResults.length === 0) {
-      this.searchResults = this.allPokemon.filter((pokemon) => {
-        return (
-          pokemon.id.toString() === searchTermLower ||
-          pokemon.name.toLowerCase().includes(searchTermLower)
-        );
-      });
-    } else if (this.language === 'EN' && this.searchResults.length !== 0) {
-      this.searchResults = [...this.searchResults].filter((pokemon) => {
-        return (
-          pokemon.id.toString() === searchTermLower ||
-          pokemon.name.toLowerCase().includes(searchTermLower)
-        );
-      });
+      }
     }
   }
 
