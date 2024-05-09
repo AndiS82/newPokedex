@@ -23,6 +23,7 @@ body {
 /* Light Theme */
 .light-theme {
   height: auto;
+  min-height: 100vh;
   background-color: #caedff;
   color: #222831;
 }
@@ -30,6 +31,7 @@ body {
 /* Dark Theme */
 .dark-theme {
   height: auto;
+  min-height: 100vh;
   background-color: #222831;
   color: #dddddd;
 }
