@@ -1,6 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { takeUntil, Subject } from 'rxjs';
+import { takeUntil, Subject, filter } from 'rxjs';
 import { IPokemon, IType } from 'src/app/interfaces/pokemon';
 import { ApiHandlerService } from 'src/app/services/apiHandler/api-handler.service';
 import { SearchHandlerService } from 'src/app/services/searchHandler/search-handler.service';
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   pokemonList: IPokemon[] = [];
   allPokemon: IPokemon[] = [];
   searchResults: IPokemon[] = [];
+  filteredList: IPokemon[] = [];
   mode = 'divLight';
   showScrollToTopButton: boolean = false;
   offset = 0;
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.searchHandlerService.filterValue$.subscribe((value) => {
       this.type = value;
-      this.searchResults = [];
+      this.filteredList = [];
       if (value) this.getPokemonByType(value);
     });
 
@@ -183,37 +184,42 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    if (this.inputValue.trim() === '') {
+    if (this.inputValue.trim() === '' && !this.type) {
       this.searchResults = [];
       return;
     }
 
-    const searchTermLower = this.inputValue.toLowerCase();
-    const isNumeric =
-      !isNaN(parseFloat(searchTermLower)) &&
-      isFinite(parseFloat(searchTermLower));
+    if (this.filteredList) this.searchResults = [...this.filteredList];
 
-    if (isNumeric) {
-      const searchTerm = parseInt(searchTermLower, 10);
-      if (this.language === 'DE') {
-        this.searchResults = DE.filter(
-          (pokemon: IPokemon) => pokemon.id === searchTerm
-        );
-      } else {
-        this.searchResults = this.allPokemon.filter(
-          (pokemon) => pokemon.id === searchTerm
-        );
-      }
-    } else {
-      if (this.language === 'DE') {
-        this.searchResults = DE.filter((pokemon: IPokemon) =>
+    const searchTermLower = this.inputValue.toLowerCase();
+    if (this.language === 'DE' && this.filteredList.length === 0) {
+      this.searchResults = DE.filter((pokemon: IPokemon): boolean => {
+        return (
+          pokemon.id.toString().includes(searchTermLower) ||
           pokemon.name.toLowerCase().includes(searchTermLower)
         );
-      } else {
-        this.searchResults = this.allPokemon.filter((pokemon) =>
+      });
+    } else if (this.language === 'DE' && this.searchResults.length !== 0) {
+      this.searchResults = [...this.searchResults].filter((pokemon) => {
+        return (
+          pokemon.id.toString().includes(searchTermLower) ||
           pokemon.name.toLowerCase().includes(searchTermLower)
         );
-      }
+      });
+    } else if (this.language === 'EN' && this.filteredList.length === 0) {
+      this.searchResults = this.allPokemon.filter((pokemon) => {
+        return (
+          pokemon.id.toString().includes(searchTermLower) ||
+          pokemon.name.toLowerCase().includes(searchTermLower)
+        );
+      });
+    } else if (this.language === 'EN' && this.searchResults.length !== 0) {
+      this.searchResults = [...this.searchResults].filter((pokemon) => {
+        return (
+          pokemon.id.toString().includes(searchTermLower) ||
+          pokemon.name.toLowerCase().includes(searchTermLower)
+        );
+      });
     }
   }
 
@@ -228,7 +234,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               (p) => p.name.toLowerCase() === result.pokemon.name
             );
             if (getIdEn && this.language === 'EN') {
-              this.searchResults.push({
+              this.filteredList.push({
                 id: getIdEn.id,
                 name: getIdEn.name,
                 url: getIdEn.url,
@@ -237,8 +243,9 @@ export class HomeComponent implements OnInit, OnDestroy {
               const getIdDe = (DE as IPokemon[]).find(
                 (p) => getIdEn.id === p.id
               );
+
               if (getIdDe) {
-                this.searchResults.push({
+                this.filteredList.push({
                   id: getIdDe.id,
                   name: getIdDe.name,
                   url: getIdEn.url,
@@ -248,6 +255,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               return;
             }
           });
+          this.searchResults = [...this.filteredList];
         },
       });
   }
